@@ -3,6 +3,7 @@
 // b. delete an element from a specific position of the array.
 // c. linear search to search an element
 // d. traversal of the array
+
 #include<stdio.h>
 void insert(int e, int p, int n, int arr[n]) {
     for(int i=n; i>=p-1; i--) {
