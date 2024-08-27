@@ -9,6 +9,7 @@
 // 1 1 17
 // 2 3 46
 // 3 4 51
+
 #include<stdio.h>
 int noOfNonZeroElements(int r, int c, int arr[r][c]) {
     int nonZero=0;
