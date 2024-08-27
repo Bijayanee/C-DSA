@@ -18,3 +18,4 @@ int main() {
   compare(&a, &b);
   return 0;
 }
+
