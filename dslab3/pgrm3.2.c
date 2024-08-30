@@ -34,7 +34,7 @@ void sparse(int r, int c, int arr1[r][c], int arr2[r][c]) {
             }
         }
     }
-    int min = (nz1>nz2)? nz1:nz2;
+    int min = (nz1<nz2)? nz1:nz2;
     for(int i=0; i<=min; i++) {
         for(int j=0; j<3; j++) {
             //printf("%d ", sarr1[i][j] + sarr2[i][j]);
