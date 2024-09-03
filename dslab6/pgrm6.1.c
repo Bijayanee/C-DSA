@@ -51,7 +51,7 @@ struct Node* insertPosition(struct Node* head, int p) {
     int c=0;
     while(ptr!=NULL) {
         c++;
-        if(c==p-1) {
+        if(c==p) {
             struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
             printf("Enter the data you want to insert: ");
             scanf("%d", &newNode->data);
@@ -78,18 +78,23 @@ struct Node* deletePosition(struct Node* head, int p) {
     }
     int c = 0;
     struct Node* temp = head;
-    struct Node* ptr = NULL;
-    while(temp!=NULL) {
-        c++;
-        if(c==p-1){
-            temp->next = temp->next->next;
-            ptr->next = NULL;
-            free(ptr);
-            break;
-        }
-        ptr = ptr->next;
+    if(p == 1){
+        temp->next->prev = NULL;
+        head = temp->next;
+        free(temp);
+        return head;
     }
-    if(c!=p-1){
+    while(c<p-1 && temp!=NULL) {
+        c++;
+        temp = temp->next;
+    }
+    if(c==p-1){
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
+        temp->next = temp->prev = NULL;
+        free(temp);
+    }
+    if(temp == NULL){
         printf("Not possible to delete at %d position.",p);
         return head;
     }
@@ -108,11 +113,14 @@ int main() {
     }
     scanf("%d",&head->data);
     head->next = NULL;
+    head->prev = NULL;
     struct Node* ptr = head;
     for(int i=1; i<n; i++) {
         struct Node* temp = (struct node*)malloc(sizeof(struct Node));
         scanf("%d",&temp->data);
+        temp->next = NULL;
         ptr->next = temp;
+        ptr->next->prev = ptr;
         ptr = ptr->next;
     }
     printf("Press 1 to Insert a node at specific position.\n");
