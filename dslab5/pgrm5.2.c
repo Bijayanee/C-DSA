@@ -50,3 +50,47 @@ struct Node* reverse(struct Node* head) {
     traversal(head);
     return head;
 }
+int main() {
+    struct Node* head = (struct node*)malloc(sizeof(struct Node));
+    printf("Enter number of elements\n");
+    int n,p;
+    scanf("%d",&n);
+    printf("Enter %d elements:\n",n);
+    if(n == 0) {
+        printf("Please add at least one element: ");
+    }
+    scanf("%d",&head->data);
+    head->next = NULL;
+    struct Node* ptr = head;
+    for(int i=1; i<n; i++) {
+        struct Node* temp = (struct node*)malloc(sizeof(struct Node));
+        scanf("%d",&temp->data);
+        ptr->next = temp;
+        ptr = ptr->next;
+    }
+    printf("Press 1 to search an element in the list\n");
+    printf("Press 2 to sort the list in ascending order\n");
+    printf("Press 3 to reverse the list\n");
+    printf("Enter your choice: ");
+    int ch, el, po;
+    scanf("%d",&ch);
+    switch (ch){
+        case 1:
+            printf("Enter the element you want to search for.\n");
+            scanf("%d", &el);
+            po = search(head,el);
+            if(po != -1) 
+                printf("The element found at %d position.\n", po);
+            else 
+                printf("The element is not there in the list.\n");
+            break;
+        case 2:
+            break;
+        case 3:
+            head = reverse(head);
+            break;
+        default:
+            printf("Invalid Input");
+            break;
+    }
+}
