@@ -105,6 +105,7 @@ int main() {
         ptr->next = temp;
         ptr = ptr->next;
     }
+    ptr->next = NULL;
     printf("Press 1 to Traverse the linked list\n");
     printf("Press 2 to Insert an element at the end\n");
     printf("Press 3 to Insert an element in the beginning\n");
